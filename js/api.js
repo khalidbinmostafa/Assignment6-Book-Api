@@ -48,5 +48,4 @@ const displayBookResult = books => {
         });
         document.getElementById('search-error').style.display = 'none';
     }
-
 }
