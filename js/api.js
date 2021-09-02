@@ -1,4 +1,5 @@
 document.getElementById('search-error').style.display = 'none';
+// searching the text value
 const searchBook = () => {
     const searchBox = document.getElementById('search-box');
     const searchText = searchBox.value;
@@ -12,38 +13,15 @@ const searchBook = () => {
         .then(data => {
             // console.log(data.numFound)
             document.getElementById('similar-result').innerText = `Similar Data in Total: ${data.numFound}`;
-            displayBookResult(data.docs.slice(0, 5))
+            displayBookResult(data.docs.slice(0, 30))
         })
     // .then(error => findingError(error));
 }
 
-// const findingError = error => {
-//     document.getElementById('search-error').style.display = 'block';
-// }
-// searchBook();
-
-// const displaySimilarText = values => {
-//     values = values.numFound;
-//     const similarText = document.getElementById('similar-result');
-
-//     // similarText.textContent = '';
-
-//     values.forEach(value => {
-//         console.log(value);
-//         const div1 = document.createElement('div');
-//         div1.classList.add('col1');
-//         div1.innerHTML = `
-//         <div>
-//         <p class="text-success"></p>Similar Total Result: ${value.numFound}
-//         </div>
-//         `;
-//         similarText.appendChild(div1);
-//     });
-// }
-// displaySimilarText();
-
+// display the searching result and also matching the result
 const displayBookResult = books => {
-    if (books == 0) {
+
+    if (books.length === 0) {
         document.getElementById('search-error').style.display = 'block';
     }
     else {
